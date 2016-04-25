@@ -3,9 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-  <data>
-    <import type="org.droiders.zoomeye.R" />
-  </data>
   <ScrollView
       android:fillViewport="true"
       android:layout_width="match_parent"

@@ -3,4 +3,7 @@
   <string name="input_email">电子邮件</string>
   <string name="input_password">密码</string>
   <string name="login">登录</string>
+  <string name="email_not_null">邮件地址不能为空~</string>
+  <string name="password_not_null">密码不能为空~</string>
+  <string name="login_success">登录成功</string>
 </resources>
