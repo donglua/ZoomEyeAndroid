@@ -71,5 +71,6 @@ dependencies {
   compile dependencies.timber
   compile dependencies.byteUnits
   compile dependencies.threetenabp
+  compile dependencies.appmsg
 
 }

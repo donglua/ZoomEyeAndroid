@@ -17,7 +17,7 @@
       android:paddingRight="@dimen/activity_horizontal_margin"
       android:paddingTop="@dimen/activity_vertical_margin"
       android:paddingBottom="@dimen/activity_vertical_margin"
-      tools:context="org.droiders.zoomeye.MainActivity"
+      tools:context=".login.LoginActivity"
       >
 
     <LinearLayout
@@ -33,11 +33,13 @@
           android:hint="@string/input_email"
           app:bootstrapBrand="primary"
           android:maxLines="1"
+          android:inputType="textEmailAddress"
           android:singleLine="true"
           app:bootstrapSize="md"
           android:textColor="@color/bootstrap_gray_dark"
           android:textColorHint="@color/bootstrap_gray_light"
           android:layout_margin="6dip"
+          android:id="@+id/et_email"
           />
 
       <com.beardedhen.androidbootstrap.BootstrapEditText
@@ -52,6 +54,7 @@
           android:textColor="@color/bootstrap_gray_dark"
           android:textColorHint="@color/bootstrap_gray_light"
           android:hint="@string/input_password"
+          android:id="@+id/et_password"
           />
       <android.support.v4.widget.Space
           android:layout_width="match_parent"
@@ -64,7 +67,7 @@
           android:text="@string/login"
           app:bootstrapSize="lg"
           app:bootstrapBrand="primary"
-          android:id="@+id/buttonLogin"
+          android:id="@+id/button_login"
           />
 
     </LinearLayout>

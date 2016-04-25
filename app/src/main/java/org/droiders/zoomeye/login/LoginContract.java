@@ -6,10 +6,14 @@ package org.droiders.zoomeye.login;
 public interface LoginContract {
 
   interface View {
+    void loginClick();
 
+    void loginSuccess();
+
+    void loginFail(String errorMessage);
   }
 
   interface Prestener {
-
+    void login(String email, String password);
   }
 }

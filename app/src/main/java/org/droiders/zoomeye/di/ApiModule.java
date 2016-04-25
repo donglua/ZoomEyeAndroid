@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import org.droiders.zoomeye.data.OauthInterceptor;
+import org.zoomeye.api.ErrorBodyHandler;
 import org.zoomeye.api.ZoomEyeApiService;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -18,7 +19,7 @@ import rx.schedulers.Schedulers;
     includes = DataModule.class
 )
 public final class ApiModule {
-  public static final HttpUrl PRODUCTION_API_URL = HttpUrl.parse("https://api.github.com/");
+  public static final HttpUrl PRODUCTION_API_URL = HttpUrl.parse("http://api.zoomeye.org");
 
   @Provides @Singleton HttpUrl provideBaseUrl() {
     return PRODUCTION_API_URL;
@@ -41,6 +42,10 @@ public final class ApiModule {
 
   @Provides @Singleton ZoomEyeApiService provideZoomEyeApiService(Retrofit retrofit) {
     return retrofit.create(ZoomEyeApiService.class);
+  }
+
+  @Provides @Singleton ErrorBodyHandler provideErrorHandler(Retrofit retrofit) {
+    return new ErrorBodyHandler(retrofit);
   }
 
   static OkHttpClient.Builder createApiClient(OkHttpClient client, OauthInterceptor oauthInterceptor) {
