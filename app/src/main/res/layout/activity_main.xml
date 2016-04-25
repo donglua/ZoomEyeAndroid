@@ -31,7 +31,7 @@
           app:bootstrapBrand="primary"
           android:maxLines="1"
           android:singleLine="true"
-          app:bootstrapSize="xl"
+          app:bootstrapSize="md"
           android:textColor="@color/bootstrap_gray_dark"
           android:textColorHint="@color/bootstrap_gray_light"
           android:layout_margin="6dip"
@@ -40,8 +40,8 @@
       <com.beardedhen.androidbootstrap.BootstrapEditText
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          app:bootstrapBrand="danger"
-          app:bootstrapSize="xl"
+          app:bootstrapBrand="primary"
+          app:bootstrapSize="md"
           android:maxLines="1"
           android:singleLine="true"
           android:inputType="textPassword"
@@ -50,13 +50,16 @@
           android:textColorHint="@color/bootstrap_gray_light"
           android:hint="@string/input_password"
           />
-
+      <android.support.v4.widget.Space
+          android:layout_width="match_parent"
+          android:layout_height="6dip"
+          />
       <com.beardedhen.androidbootstrap.BootstrapButton
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_margin="6dip"
           android:text="@string/login"
-          app:bootstrapSize="xl"
+          app:bootstrapSize="lg"
           app:bootstrapBrand="primary"
           />
 
