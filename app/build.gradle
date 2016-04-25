@@ -20,7 +20,9 @@ android {
     versionCode 1
     versionName "0.9.0"
     multiDexEnabled true
+    vectorDrawables.useSupportLibrary = true
   }
+
   dataBinding {
     enabled true
   }
@@ -46,6 +48,7 @@ dependencies {
   // Rx
   compile dependencies.rxJava
   compile dependencies.rxAndroid
+  compile dependencies.rxBinding
 
   compile dependencies.gson
   // http

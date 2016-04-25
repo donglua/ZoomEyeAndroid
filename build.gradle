@@ -15,6 +15,7 @@ ext {
   gsonLibVersion = "2.6.2"
   zoomeyeApiVersion = "0.0.1@aar"
   androidBootstrapVersion = "2.1.0"
+  rxBindingVersion = "0.4.0"
 
   dependencies = [
       // Dagge"2
@@ -24,6 +25,7 @@ ext {
       // Rx
       rxJava                  : "io.reactivex:rxjava:$rxjavaLibVersion",
       rxAndroid               : "io.reactivex:rxandroid:$rxAndroidVersion",
+      rxBinding               : "com.jakewharton.rxbinding:rxbinding:$rxBindingVersion",
       // json
       gson                    : "com.google.code.gson:gson:$gsonLibVersion",
       // Http
