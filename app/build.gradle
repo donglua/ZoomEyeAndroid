@@ -49,6 +49,7 @@ dependencies {
   compile dependencies.rxJava
   compile dependencies.rxAndroid
   compile dependencies.rxBinding
+  compile dependencies.rxPreferences
 
   compile dependencies.gson
   // http
@@ -66,5 +67,9 @@ dependencies {
 
   // Android Bootstrap
   compile dependencies.androidBootstrap
+
+  compile dependencies.timber
+  compile dependencies.byteUnits
+  compile dependencies.threetenabp
 
 }

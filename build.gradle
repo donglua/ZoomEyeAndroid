@@ -26,6 +26,7 @@ ext {
       rxJava                  : "io.reactivex:rxjava:$rxjavaLibVersion",
       rxAndroid               : "io.reactivex:rxandroid:$rxAndroidVersion",
       rxBinding               : "com.jakewharton.rxbinding:rxbinding:$rxBindingVersion",
+      rxPreferences           : "com.f2prateek.rx.preferences:rx-preferences:1.0.0",
       // json
       gson                    : "com.google.code.gson:gson:$gsonLibVersion",
       // Http
@@ -43,7 +44,13 @@ ext {
 
       androidBootstrap        : "com.beardedhen:androidbootstrap:$androidBootstrapVersion",
 
-      zoomEyeApi              : "org.droiders:zoomeye-api:$zoomeyeApiVersion"
+      zoomEyeApi              : "org.droiders:zoomeye-api:$zoomeyeApiVersion",
+
+      timber                  : "com.jakewharton.timber:timber:4.1.0",
+      byteUnits               : "com.jakewharton.byteunits:byteunits:0.9.1",
+      threetenabp             : 'com.jakewharton.threetenabp:threetenabp:1.0.2'
+
+
   ]
 }
 
