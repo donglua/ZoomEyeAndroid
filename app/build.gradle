@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  dexOptions {
+    javaMaxHeapSize "4g"
+  }
+  defaultConfig {
+    applicationId "org.droiders.zoomeye"
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
+    versionCode 1
+    versionName "0.9.0"
+    multiDexEnabled true
+  }
+  dataBinding {
+    enabled true
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  def dependencies = rootProject.ext.dependencies
+
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  testCompile 'junit:junit:4.12'
+  // ZoomEye-Api
+  compile dependencies.zoomEyeApi
+  // dagger
+  compile dependencies.dagger
+  apt dependencies.daggerCompiler
+  provided dependencies.javaxAnnotation
+  // Rx
+  compile dependencies.rxJava
+  compile dependencies.rxAndroid
+
+  compile dependencies.gson
+  // http
+  compile dependencies.retrofit
+  compile dependencies.retrofitGsonConverter
+  compile dependencies.retrofitRxjavaAdapter
+  compile dependencies.okhttp3
+  compile dependencies.okhttpLoggingInterceptor
+  // support
+  compile dependencies.supportAppCompat
+  compile dependencies.supportDesign
+  compile dependencies.supportRecyclerview
+  compile dependencies.supportGridlayout
+  compile dependencies.supportAnnotations
+
+  // Android Bootstrap
+  compile dependencies.androidBootstrap
+
+}
