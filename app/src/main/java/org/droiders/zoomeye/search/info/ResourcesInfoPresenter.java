@@ -1,6 +1,8 @@
 package org.droiders.zoomeye.search.info;
 
+import java.net.SocketTimeoutException;
 import javax.inject.Inject;
+import org.droiders.zoomeye.R;
 import org.zoomeye.api.ErrorBodyHandler;
 import org.zoomeye.api.ZoomEyeApiService;
 import rx.android.schedulers.AndroidSchedulers;
@@ -30,6 +32,10 @@ public class ResourcesInfoPresenter implements ResourcesInfoContract.Prestener {
             view.showResourcesInfo(resourcesInfoResponse.body());
           } else {
             view.showErrorMsg(errorBodyHandler.parseError(resourcesInfoResponse.errorBody()).getMessage());
+          }
+        }, throwable -> {
+          if (throwable instanceof SocketTimeoutException) {
+            view.showErrorMsg(R.string.toast_time_out);
           }
         });
   }

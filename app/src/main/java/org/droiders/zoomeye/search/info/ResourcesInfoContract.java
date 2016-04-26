@@ -1,5 +1,6 @@
 package org.droiders.zoomeye.search.info;
 
+import android.support.annotation.StringRes;
 import org.zoomeye.api.info.ResourcesInfo;
 
 /**
@@ -11,6 +12,7 @@ public interface ResourcesInfoContract {
     void showResourcesInfo(ResourcesInfo resourcesInfo);
 
     void showErrorMsg(String message);
+    void showErrorMsg(@StringRes int stringResId);
   }
 
   interface Prestener {

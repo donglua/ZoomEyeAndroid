@@ -54,6 +54,7 @@
           app:bootstrapBrand="secondary"
           />
       <android.support.v7.widget.AppCompatEditText
+          android:singleLine="true"
           android:layout_weight="1"
           android:layout_width="0dp"
           android:hint="@string/hint_search"
@@ -97,7 +98,7 @@
           app:bootstrapBrand="info"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text='@{@string/plan_(info.plan)}'
+          android:text='@{@string/plan_(info.plan??"")}'
           />
 
       <TextView

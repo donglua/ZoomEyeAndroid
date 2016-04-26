@@ -3,8 +3,10 @@ package org.droiders.zoomeye.search;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
+import com.devspark.appmsg.AppMsg;
 import javax.inject.Inject;
 import org.droiders.zoomeye.R;
 import org.droiders.zoomeye.databinding.ActivitySearchBinding;
@@ -57,6 +59,10 @@ public class SearchActivity extends AppCompatActivity implements ResourcesInfoCo
   }
 
   @Override public void showErrorMsg(String message) {
-    // ignore..
+    AppMsg.makeText(this, message, AppMsg.STYLE_ALERT).show();
+  }
+
+  @Override public void showErrorMsg(@StringRes int stringResId) {
+    showErrorMsg(getString(stringResId));
   }
 }
