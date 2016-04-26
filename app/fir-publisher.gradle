@@ -1,0 +1,16 @@
+apply plugin: 'im.fir.plugin.gradle'
+
+ext {
+  Properties properties = new Properties()
+  properties.load(project.rootProject.file('local.properties').newDataInputStream())
+  api_token = properties.getProperty('fir_api_token')
+}
+
+fir{
+  //必填 上传 fir.im apk 字段，否则无法上传 APP 到 fir.im
+  apiToken api_token
+
+
+  //可选 上传fir.im 中显示的changelog
+  changeLog 'update'
+}

@@ -1,7 +1,9 @@
 package org.droiders.zoomeye.di;
 
+import com.f2prateek.rx.preferences.Preference;
 import dagger.Component;
 import javax.inject.Singleton;
+import org.droiders.zoomeye.data.AccessToken;
 
 @Singleton
 @Component(
@@ -10,4 +12,6 @@ import javax.inject.Singleton;
     }
 )
 public interface ApiComponent {
+
+    @AccessToken Preference<String> accessToken();
 }

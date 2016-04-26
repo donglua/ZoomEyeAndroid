@@ -1,9 +1,9 @@
-package org.droiders.zoomeye.host;
+package org.droiders.zoomeye.search.web;
 
 /**
  * Created by Donglua on 16/4/25.
  */
-public interface HostSearchContract {
+public interface WebSearchContract {
 
   interface View {
 
@@ -12,4 +12,5 @@ public interface HostSearchContract {
   interface Prestener {
 
   }
+
 }

@@ -6,4 +6,28 @@
   <string name="email_not_null">邮件地址不能为空~</string>
   <string name="password_not_null">密码不能为空~</string>
   <string name="login_success">登录成功</string>
+  <string name="tab_host_search">公网设备</string>
+  <string name="tab_web_search">Web服务</string>
+  <string name="button_search">Search</string>
+  <string name="hint_search">Search...</string>
+
+
+  <string name="plan_">Plan: %s</string>
+  <string name="host_search_">Host search: %d</string>
+  <string name="web_search_">Web search: %d</string>
+
+  <array name="search_dropdown">
+    <item>app</item>
+    <item>version</item>
+    <item>device</item>
+    <item>os</item>
+    <item>service</item>
+    <item>ip</item>
+    <item>cidr</item>
+    <item>hostname</item>
+    <item>port</item>
+    <item>city</item>
+    <item>country</item>
+    <item>asn</item>
+  </array>
 </resources>

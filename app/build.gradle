@@ -22,12 +22,20 @@ android {
     multiDexEnabled true
     vectorDrawables.useSupportLibrary = true
   }
-
+  signingConfigs {
+    release {
+      storeFile file("../ZoomEye.keystore")
+      storePassword "ZoomEye"
+      keyAlias "ZoomEye"
+      keyPassword "ZoomEye"
+    }
+  }
   dataBinding {
     enabled true
   }
   buildTypes {
     release {
+      signingConfig signingConfigs.release
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
@@ -74,3 +82,4 @@ dependencies {
   compile dependencies.appmsg
 
 }
+apply from: "fir-publisher.gradle"

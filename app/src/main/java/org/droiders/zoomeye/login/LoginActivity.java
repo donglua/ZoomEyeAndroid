@@ -1,5 +1,6 @@
 package org.droiders.zoomeye.login;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +9,10 @@ import com.devspark.appmsg.AppMsg;
 import com.jakewharton.rxbinding.view.RxView;
 import javax.inject.Inject;
 import org.droiders.zoomeye.R;
+import org.droiders.zoomeye.ZoomEyeApp;
 import org.droiders.zoomeye.databinding.ActivityLoginBinding;
 import org.droiders.zoomeye.di.AppModule;
+import org.droiders.zoomeye.search.SearchActivity;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
@@ -23,21 +26,29 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     super.onCreate(savedInstanceState);
     binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
-    LoginComponent loginComponent = DaggerLoginComponent.builder()
-        .loginModule(new LoginModule(this))
-        .appModule(new AppModule(this))
-        .build();
-    loginComponent.inject(this);
+    if (ZoomEyeApp.isLogin(this)) {
 
-    RxView.clicks(binding.buttonLogin)
-        .debounce(300, MILLISECONDS)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(aVoid -> this.loginClick());
+      startActivity(new Intent(this, SearchActivity.class));
+      this.finish();
+
+    } else {
+
+      LoginComponent loginComponent = DaggerLoginComponent.builder()
+          .loginModule(new LoginModule(this))
+          .appModule(new AppModule(this))
+          .build();
+      loginComponent.inject(this);
+
+      RxView.clicks(binding.buttonLogin)
+          .debounce(300, MILLISECONDS)
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribe(aVoid -> this.loginClick());
+    }
   }
 
   @Override
   public void loginClick() {
-    final String email    = binding.etEmail.getText().toString();
+    final String email = binding.etEmail.getText().toString();
     final String password = binding.etPassword.getText().toString();
     if (TextUtils.isEmpty(email)) {
       AppMsg.makeText(this, R.string.email_not_null, AppMsg.STYLE_ALERT).show();
@@ -53,7 +64,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
   @Override public void loginSuccess() {
     AppMsg.makeText(this, getString(R.string.login_success), AppMsg.STYLE_INFO).show();
 
+    startActivity(new Intent(this, SearchActivity.class));
 
+    finish();
   }
 
   @Override public void loginFail(String errorMessage) {
