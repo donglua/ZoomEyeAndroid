@@ -2,7 +2,7 @@ package org.droiders.zoomeye.search.info;
 
 import dagger.Module;
 import dagger.Provides;
-import javax.inject.Singleton;
+import org.droiders.zoomeye.di.ViewScope;
 
 /**
  * Created by Donglua on 16/4/27.
@@ -15,7 +15,7 @@ public class ResourcesInfoModule {
     this.view = view;
   }
 
-  @Provides @Singleton
+  @Provides @ViewScope
   public ResourcesInfoContract.View provideResourcesInfoView() {
     return view;
   }

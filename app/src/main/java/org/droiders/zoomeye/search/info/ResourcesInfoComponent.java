@@ -1,18 +1,14 @@
 package org.droiders.zoomeye.search.info;
 
-import dagger.Component;
-import javax.inject.Singleton;
-import org.droiders.zoomeye.di.ApiModule;
-import org.droiders.zoomeye.search.SearchActivity;
+import dagger.Subcomponent;
+import org.droiders.zoomeye.di.ViewScope;
 
-@Singleton
-@Component(
-    modules = {
-        ApiModule.class, ResourcesInfoModule.class
-    }
+@ViewScope
+@Subcomponent(
+    modules = ResourcesInfoModule.class
 )
 public interface ResourcesInfoComponent {
 
-  void inject(SearchActivity searchActivity);
+  ResourcesInfoPresenter getPresenter();
 
 }

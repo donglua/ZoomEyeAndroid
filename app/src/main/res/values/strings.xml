@@ -17,6 +17,8 @@
   <string name="web_search_">Web search: %d</string>
   <string name="toast_time_out">连接超时...</string>
 
+  <string name="action_logout">退出登录</string>
+
   <array name="search_dropdown">
     <item>app</item>
     <item>version</item>
