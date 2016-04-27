@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import com.devspark.appmsg.AppMsg;
 import com.jakewharton.rxbinding.view.RxView;
+import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 import org.droiders.zoomeye.R;
 import org.droiders.zoomeye.ZoomEyeApp;
@@ -64,9 +65,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
   @Override public void loginSuccess() {
     AppMsg.makeText(this, getString(R.string.login_success), AppMsg.STYLE_INFO).show();
 
-    startActivity(new Intent(this, SearchActivity.class));
-
-    finish();
+    rx.Observable.just("").delay(300, TimeUnit.MILLISECONDS)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(s -> {
+          startActivity(new Intent(this, SearchActivity.class));
+          finish();
+        });
   }
 
   @Override public void loginFail(String errorMessage) {
