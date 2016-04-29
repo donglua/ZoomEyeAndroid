@@ -1,6 +1,8 @@
 package org.droiders.zoomeye.search.host;
 
 import javax.inject.Inject;
+import org.zoomeye.api.ErrorBody;
+import org.zoomeye.api.ErrorBodyHandler;
 import org.zoomeye.api.ZoomEyeApiService;
 import rx.android.schedulers.AndroidSchedulers;
 
@@ -11,11 +13,14 @@ public class HostSearchPresenter implements HostSearchContract.Presenter {
 
   private final ZoomEyeApiService api;
   private final HostSearchContract.View view;
+  private final ErrorBodyHandler errorBodyHandler;
 
   @Inject
-  public HostSearchPresenter(ZoomEyeApiService api, HostSearchContract.View view) {
+  public HostSearchPresenter(ZoomEyeApiService api,
+      HostSearchContract.View view, ErrorBodyHandler errorBodyHandler) {
     this.api = api;
     this.view = view;
+    this.errorBodyHandler = errorBodyHandler;
   }
 
   @Override public void search(String query, int page) {
@@ -28,7 +33,8 @@ public class HostSearchPresenter implements HostSearchContract.Presenter {
             view.showMatches(searchResultResponse.body().getMatches());
 
           } else {
-
+            ErrorBody errorBody = errorBodyHandler.parseError(searchResultResponse.errorBody());
+            view.showErrorMessage(errorBody.getMessage());
           }
 
         });

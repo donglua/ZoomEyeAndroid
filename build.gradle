@@ -16,6 +16,7 @@ ext {
   zoomeyeApiVersion = "0.0.8@aar"
   androidBootstrapVersion = "2.1.0"
   rxBindingVersion = "0.4.0"
+  superRecyclerViewVersion = "1.1.4"
 
   dependencies = [
       // Dagge"2
@@ -48,6 +49,8 @@ ext {
 
       zoomEyeApi              : "org.droiders:zoomeye-api:$zoomeyeApiVersion",
 
+      superRecyclerView       : "com.malinskiy:superrecyclerview:$superRecyclerViewVersion",
+
       timber                  : "com.jakewharton.timber:timber:4.1.0",
       byteUnits               : "com.jakewharton.byteunits:byteunits:0.9.1",
       threetenabp             : 'com.jakewharton.threetenabp:threetenabp:1.0.2',
@@ -64,7 +67,7 @@ buildscript {
     }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.0.0'
+    classpath 'com.android.tools.build:gradle:2.1.0'
 
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 

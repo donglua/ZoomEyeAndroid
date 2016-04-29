@@ -6,7 +6,9 @@
       android:layout_height="match_parent"
       >
 
-    <android.support.v7.widget.RecyclerView
+    <com.malinskiy.superrecyclerview.SuperRecyclerView
+        android:overScrollMode="never"
+        android:background="?android:windowBackground"
         android:id="@+id/list_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

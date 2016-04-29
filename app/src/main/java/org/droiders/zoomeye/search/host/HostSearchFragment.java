@@ -3,9 +3,11 @@ package org.droiders.zoomeye.search.host;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.devspark.appmsg.AppMsg;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -21,6 +23,7 @@ import static org.droiders.zoomeye.search.search.SearchResultActivity.EXTRA_QUER
  */
 public class HostSearchFragment extends Fragment implements HostSearchContract.View {
 
+  private FragmentSearchBinding binding;
   private SearchResultAdapter mResultAdapter;
   private List<Match> mMatchList;
 
@@ -51,20 +54,36 @@ public class HostSearchFragment extends Fragment implements HostSearchContract.V
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-    FragmentSearchBinding binding = FragmentSearchBinding.inflate(inflater, container, false);
+    binding = FragmentSearchBinding.inflate(inflater, container, false);
 
+    binding.listResult.setLayoutManager(new LinearLayoutManager(getContext()));
     binding.listResult.setAdapter(mResultAdapter);
 
     final String query = getArguments().getString(EXTRA_QUERY);
-
     mPresenter.search(query, page);
+
+    binding.listResult.setRefreshListener(() -> {
+      page = 1;
+      mPresenter.search(query, page);
+    });
+    binding.listResult.setupMoreListener(
+        (overallItemsCount, itemsBeforeMore, maxLastVisiblePosition) -> {
+          mPresenter.search(query, ++page);
+        }, 1);
 
     return binding.getRoot();
   }
 
   @Override public void showMatches(List<Match> matches) {
-    mMatchList.clear();
+    if (page == 1) mMatchList.clear();
     mMatchList.addAll(matches);
     mResultAdapter.notifyDataSetChanged();
   }
+
+  @Override public void showErrorMessage(String message) {
+    AppMsg.makeText(getActivity(), message, AppMsg.STYLE_ALERT).show();
+
+    binding.listResult.setRefreshing(false);
+  }
+
 }

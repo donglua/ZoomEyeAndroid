@@ -82,5 +82,7 @@ dependencies {
   compile dependencies.threetenabp
   compile dependencies.appmsg
 
+  compile dependencies.superRecyclerView
+
 }
 apply from: "fir-publisher.gradle"

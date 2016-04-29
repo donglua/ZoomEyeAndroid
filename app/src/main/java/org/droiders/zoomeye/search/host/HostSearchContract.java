@@ -11,6 +11,8 @@ public interface HostSearchContract {
   interface View {
 
     void showMatches(List<Match> matches);
+
+    void showErrorMessage(String message);
   }
 
   interface Presenter {
