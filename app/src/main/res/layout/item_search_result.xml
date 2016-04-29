@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
   <data>
-    <import type="org.zoomeye.api.search.Match"/>
+    <import type="org.zoomeye.api.search.MatchHost"/>
     <import type="android.view.View"/>
     <import type="android.text.TextUtils"/>
     <variable
         name="match"
-        type="Match"
+        type="MatchHost"
         />
   </data>
   <android.support.v7.widget.CardView

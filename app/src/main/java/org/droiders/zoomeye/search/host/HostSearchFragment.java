@@ -11,10 +11,10 @@ import com.devspark.appmsg.AppMsg;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
-import org.droiders.zoomeye.adapter.SearchResultAdapter;
+import org.droiders.zoomeye.adapter.HostSearchResultAdapter;
 import org.droiders.zoomeye.databinding.FragmentSearchBinding;
 import org.droiders.zoomeye.di.AppModule;
-import org.zoomeye.api.search.Match;
+import org.zoomeye.api.search.MatchHost;
 
 import static org.droiders.zoomeye.search.search.SearchResultActivity.EXTRA_QUERY;
 
@@ -24,8 +24,8 @@ import static org.droiders.zoomeye.search.search.SearchResultActivity.EXTRA_QUER
 public class HostSearchFragment extends Fragment implements HostSearchContract.View {
 
   private FragmentSearchBinding binding;
-  private SearchResultAdapter mResultAdapter;
-  private List<Match> mMatchList;
+  private HostSearchResultAdapter mResultAdapter;
+  private List<MatchHost> mMatchList;
 
   @Inject HostSearchPresenter mPresenter;
   private int page = 1;
@@ -48,7 +48,7 @@ public class HostSearchFragment extends Fragment implements HostSearchContract.V
         .inject(this);
 
     mMatchList = new ArrayList<>();
-    mResultAdapter = new SearchResultAdapter(mMatchList);
+    mResultAdapter = new HostSearchResultAdapter(mMatchList);
   }
 
   @Nullable @Override
@@ -74,7 +74,7 @@ public class HostSearchFragment extends Fragment implements HostSearchContract.V
     return binding.getRoot();
   }
 
-  @Override public void showMatches(List<Match> matches) {
+  @Override public void showMatches(List<MatchHost> matches) {
     if (page == 1) mMatchList.clear();
     mMatchList.addAll(matches);
     mResultAdapter.notifyDataSetChanged();

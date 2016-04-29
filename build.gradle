@@ -13,7 +13,7 @@ ext {
   rxjavaLibVersion = "1.1.3"
   rxAndroidVersion = "1.1.0"
   gsonLibVersion = "2.6.2"
-  zoomeyeApiVersion = "0.0.8@aar"
+  zoomeyeApiVersion = "0.1.1@aar"
   androidBootstrapVersion = "2.1.0"
   rxBindingVersion = "0.4.0"
   superRecyclerViewVersion = "1.1.4"

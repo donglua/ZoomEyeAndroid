@@ -24,7 +24,7 @@ public class HostSearchPresenter implements HostSearchContract.Presenter {
   }
 
   @Override public void search(String query, int page) {
-    api.search(query, page, "")
+    api.searchHost(query, page, "")
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(searchResultResponse -> {
 

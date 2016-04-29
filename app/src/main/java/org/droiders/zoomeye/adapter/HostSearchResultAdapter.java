@@ -5,16 +5,16 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import java.util.List;
 import org.droiders.zoomeye.databinding.ItemSearchResultBinding;
-import org.zoomeye.api.search.Match;
+import org.zoomeye.api.search.MatchHost;
 
 /**
  * Created by Donglua on 16/4/29.
  */
-public class SearchResultAdapter extends RecyclerView.Adapter<DataBoundViewHolder<ItemSearchResultBinding>> {
+public class HostSearchResultAdapter extends RecyclerView.Adapter<DataBoundViewHolder<ItemSearchResultBinding>> {
 
-  private List<Match> mMatches;
+  private List<MatchHost> mMatches;
 
-  public SearchResultAdapter(List<Match> matches) {
+  public HostSearchResultAdapter(List<MatchHost> matches) {
     mMatches = matches;
   }
 
@@ -26,7 +26,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<DataBoundViewHolde
 
   @Override
   public void onBindViewHolder(DataBoundViewHolder<ItemSearchResultBinding> holder, int position) {
-    final Match match = mMatches.get(position);
+    final MatchHost match = mMatches.get(position);
     holder.getBinding().setMatch(match);
     holder.getBinding().executePendingBindings();
   }
