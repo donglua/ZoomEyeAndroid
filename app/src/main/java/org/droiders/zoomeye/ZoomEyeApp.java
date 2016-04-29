@@ -35,6 +35,10 @@ public final class ZoomEyeApp extends Application {
     return !TextUtils.isEmpty(apiComponent(context).accessToken().get());
   }
 
+  public static void logout(Context context) {
+    apiComponent(context).accessToken().delete();
+  }
+
   protected void attachBaseContext(Context base) {
     super.attachBaseContext(base);
     MultiDex.install(this);

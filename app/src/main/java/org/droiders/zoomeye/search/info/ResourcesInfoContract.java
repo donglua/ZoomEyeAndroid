@@ -13,9 +13,11 @@ public interface ResourcesInfoContract {
 
     void showErrorMsg(String message);
     void showErrorMsg(@StringRes int stringResId);
+
+    void logout();
   }
 
-  interface Prestener {
+  interface Presenter {
     void getResourcesInfo();
   }
 

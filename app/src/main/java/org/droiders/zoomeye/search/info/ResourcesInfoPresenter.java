@@ -10,7 +10,7 @@ import rx.android.schedulers.AndroidSchedulers;
 /**
  * Created by Donglua on 16/4/27.
  */
-public class ResourcesInfoPresenter implements ResourcesInfoContract.Prestener {
+public class ResourcesInfoPresenter implements ResourcesInfoContract.Presenter {
 
   private final ErrorBodyHandler errorBodyHandler;
   private final ZoomEyeApiService api;
@@ -32,6 +32,10 @@ public class ResourcesInfoPresenter implements ResourcesInfoContract.Prestener {
             view.showResourcesInfo(resourcesInfoResponse.body());
           } else {
             view.showErrorMsg(errorBodyHandler.parseError(resourcesInfoResponse.errorBody()).getMessage());
+            if (resourcesInfoResponse.code() == 401) { // 请求未授权，缺少 token，或者 token 已过期失效
+              // 退出登录
+              view.logout();
+            }
           }
         }, throwable -> {
           if (throwable instanceof SocketTimeoutException) {

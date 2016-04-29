@@ -72,6 +72,7 @@ dependencies {
   compile dependencies.supportRecyclerview
   compile dependencies.supportGridlayout
   compile dependencies.supportAnnotations
+  compile dependencies.supportCardView
 
   // Android Bootstrap
   compile dependencies.androidBootstrap

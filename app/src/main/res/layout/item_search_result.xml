@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+  <data>
+    <import type="org.zoomeye.api.search.Match"/>
+    <import type="android.view.View"/>
+    <import type="android.text.TextUtils"/>
+    <variable
+        name="match"
+        type="Match"
+        />
+  </data>
+  <android.support.v7.widget.CardView
+      app:cardBackgroundColor="@color/colorMain"
+      app:cardElevation="2dp"
+      app:cardUseCompatPadding="true"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+    <LinearLayout
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <com.beardedhen.androidbootstrap.AwesomeTextView
+          tools:text="123.123.123.12"
+          app:bootstrapBrand="primary"
+          android:textSize="18sp"
+          app:bootstrapText="@{match.ip}"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+
+      <LinearLayout
+          android:gravity="center_vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          >
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            tools:text="portInfo.service"
+            app:bootstrapBrand="regular"
+            app:bootstrapText="@{match.portInfo.service}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            android:layout_marginLeft="@dimen/micro_padding"
+            tools:text="portInfo.port"
+            app:bootstrapBrand="danger"
+            app:bootstrapText="@{match.portInfo.port}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            android:layout_marginLeft="@dimen/micro_padding"
+            tools:text="Unix"
+            app:bootstrapBrand="info"
+            app:bootstrapText="@{match.portInfo.os}"
+            android:visibility="@{TextUtils.isEmpty(match.portInfo.os)?View.GONE:View.VISIBLE}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <android.support.v4.widget.Space
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            tools:text="country"
+            android:text="@{match.timestamp}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+      </LinearLayout>
+
+
+      <LinearLayout
+          android:paddingTop="@dimen/micro_padding"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          >
+        <com.beardedhen.androidbootstrap.AwesomeTextView
+            tools:text="country"
+            app:bootstrapBrand="info"
+            app:bootstrapText="@{match.geoinfo.country.names.zhCN}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <com.beardedhen.androidbootstrap.AwesomeTextView
+            tools:text="country"
+            app:bootstrapBrand="info"
+            app:bootstrapText="@{match.geoinfo.city.names.zhCN}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <com.beardedhen.androidbootstrap.AwesomeTextView
+            tools:text="country"
+            app:bootstrapBrand="info"
+            app:bootstrapText="@{match.geoinfo.subdivisions.names.zhCN}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+      </LinearLayout>
+
+      <TextView
+          tools:text="secondarysecondarysecondary"
+          android:text="@{match.portInfo.banner}"
+          android:textColor="@color/bootstrap_brand_success"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          />
+
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
+
+</layout>

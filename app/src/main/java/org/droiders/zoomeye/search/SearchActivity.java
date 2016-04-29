@@ -7,9 +7,11 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.devspark.appmsg.AppMsg;
+import com.jakewharton.rxbinding.view.RxView;
 import org.droiders.zoomeye.R;
 import org.droiders.zoomeye.ZoomEyeApp;
 import org.droiders.zoomeye.databinding.ActivitySearchBinding;
@@ -20,7 +22,12 @@ import org.droiders.zoomeye.login.LogoutPresenter;
 import org.droiders.zoomeye.search.info.ResourcesInfoContract;
 import org.droiders.zoomeye.search.info.ResourcesInfoModule;
 import org.droiders.zoomeye.search.info.ResourcesInfoPresenter;
+import org.droiders.zoomeye.search.search.SearchResultActivity;
 import org.zoomeye.api.info.ResourcesInfo;
+import rx.android.schedulers.AndroidSchedulers;
+
+import static org.droiders.zoomeye.search.search.SearchResultActivity.TYPE_HOST;
+import static org.droiders.zoomeye.search.search.SearchResultActivity.TYPE_WEB;
 
 /**
  * Created by Donglua on 16/4/26.
@@ -54,6 +61,16 @@ public class SearchActivity extends AppCompatActivity implements ResourcesInfoCo
     binding.tabLayout.addTab(hostSearchTab);
     binding.tabLayout.addTab(webSearchTab);
 
+    RxView.clicks(binding.buttonSearch)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(aVoid -> {
+          String query = binding.etSearch.getText().toString();
+          if (!TextUtils.isEmpty(query)) {
+            int type = hostSearchTab.isSelected() ? TYPE_HOST : TYPE_WEB;
+            SearchResultActivity.openActivity(this, query, type);
+          }
+        });
+
   }
 
   @Override protected void onResume() {
@@ -82,6 +99,7 @@ public class SearchActivity extends AppCompatActivity implements ResourcesInfoCo
   }
 
   @Override public void logout() {
+    ZoomEyeApp.logout(this);
     this.startActivity(new Intent(this, LoginActivity.class));
     finish();
   }

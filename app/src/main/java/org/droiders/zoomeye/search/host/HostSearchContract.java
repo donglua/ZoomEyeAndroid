@@ -1,5 +1,8 @@
 package org.droiders.zoomeye.search.host;
 
+import java.util.List;
+import org.zoomeye.api.search.Match;
+
 /**
  * Created by Donglua on 16/4/25.
  */
@@ -7,9 +10,10 @@ public interface HostSearchContract {
 
   interface View {
 
+    void showMatches(List<Match> matches);
   }
 
-  interface Prestener {
-
+  interface Presenter {
+    void search(String query, int page);
   }
 }
