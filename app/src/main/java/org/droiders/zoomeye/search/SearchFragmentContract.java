@@ -1,16 +1,18 @@
-package org.droiders.zoomeye.search.host;
+package org.droiders.zoomeye.search;
 
 import java.util.List;
 import org.zoomeye.api.search.MatchHost;
+import org.zoomeye.api.search.MatchWeb;
 
 /**
  * Created by Donglua on 16/4/25.
  */
-public interface HostSearchContract {
+public interface SearchFragmentContract {
 
   interface View {
 
-    void showMatches(List<MatchHost> matches);
+    void showHostMatches(List<MatchHost> matches);
+    void showWebMatches(List<MatchWeb> matches);
 
     void showErrorMessage(String message);
   }

@@ -14,14 +14,16 @@ import javax.inject.Inject;
 import org.droiders.zoomeye.adapter.HostSearchResultAdapter;
 import org.droiders.zoomeye.databinding.FragmentSearchBinding;
 import org.droiders.zoomeye.di.AppModule;
+import org.droiders.zoomeye.search.SearchFragmentContract;
 import org.zoomeye.api.search.MatchHost;
+import org.zoomeye.api.search.MatchWeb;
 
 import static org.droiders.zoomeye.search.search.SearchResultActivity.EXTRA_QUERY;
 
 /**
  * Created by Donglua on 16/4/26.
  */
-public class HostSearchFragment extends Fragment implements HostSearchContract.View {
+public class HostSearchFragment extends Fragment implements SearchFragmentContract.View {
 
   private FragmentSearchBinding binding;
   private HostSearchResultAdapter mResultAdapter;
@@ -41,8 +43,8 @@ public class HostSearchFragment extends Fragment implements HostSearchContract.V
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    DaggerHostSearchComponent.builder()
-        .hostSearchModule(new HostSearchModule(this))
+    DaggerSearchFragmentComponent.builder()
+        .searchFragmentModule(new SearchFragmentModule(this))
         .appModule(new AppModule(getContext()))
         .build()
         .inject(this);
@@ -74,10 +76,13 @@ public class HostSearchFragment extends Fragment implements HostSearchContract.V
     return binding.getRoot();
   }
 
-  @Override public void showMatches(List<MatchHost> matches) {
+  @Override public void showHostMatches(List<MatchHost> matches) {
     if (page == 1) mMatchList.clear();
     mMatchList.addAll(matches);
     mResultAdapter.notifyDataSetChanged();
+  }
+
+  @Override public void showWebMatches(List<MatchWeb> matches) {
   }
 
   @Override public void showErrorMessage(String message) {

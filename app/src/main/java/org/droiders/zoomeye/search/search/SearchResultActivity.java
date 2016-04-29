@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import org.droiders.zoomeye.R;
 import org.droiders.zoomeye.databinding.ActivitySearchResultBinding;
 import org.droiders.zoomeye.search.host.HostSearchFragment;
+import org.droiders.zoomeye.search.web.WebSearchFragment;
 
 /**
  * Created by Donglua on 16/4/28.
@@ -59,7 +60,11 @@ public class SearchResultActivity extends AppCompatActivity {
             .commit();
         break;
       case TYPE_WEB:
-
+        fragment = WebSearchFragment.newInstance(query);
+        getSupportFragmentManager()
+            .beginTransaction()
+            .add(R.id.container, fragment)
+            .commit();
         break;
     }
   }
