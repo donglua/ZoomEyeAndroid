@@ -3,7 +3,7 @@ ZoomEye for Android
 
 ## APK
 
-<a href="http://fir.im/wk6m" target="_blank">http://fir.im/wk6m</a>
+<a href="http://fir.im/wk6m" target="_blank">ZoomEye Android</a>
 
 ## Screenshot
 
