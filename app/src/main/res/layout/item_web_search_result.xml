@@ -122,7 +122,7 @@
 
       <TextView
           tools:text="secondarysecondarysecondary"
-          android:text="@{match.description}"
+          android:text="@{match.headers}"
           android:textColor="@color/bootstrap_brand_success"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
